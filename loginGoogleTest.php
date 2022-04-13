@@ -67,7 +67,7 @@
           userPicture: userPicture,
           userEmail: userEmail
         }
-        $.post('http://votacao.alunos.esmonserrate.org/public/login/valida', dados, function(retorna) {
+        $.post('public/validacaoLogin', dados, function(retorna) {
           //alert(retorna)
           //retorna=1;
           //console.log("dsdsd")
