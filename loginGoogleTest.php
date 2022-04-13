@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt">
-
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Login da Google">
-  <meta name="author" content="António Lira Fernandes">
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+  <meta name="description" content="Login da Google"/>
+  <meta name="author" content="António Lira Fernandes"/>
   <meta name="google-signin-client_id" content="436091069232-g9n82uk2iua4hpa3unrfrt3iq0gkntb7.apps.googleusercontent.com">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-  <link rel="icon" type="images/png" sizes="16x16" href="img/looglemin.png">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
+  <link rel="icon" type="images/png" sizes="16x16" href="img/looglemin.png"/>
   <!--script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script-->
   <!--script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script-->
   <script src="https://apis.google.com/js/platform.js" async defer></script>
