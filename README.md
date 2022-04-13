@@ -20,8 +20,8 @@
 
 #1 - Introduction
 
-chatText
-The chatTex is a system for sending messages between registered users on a website. Is indicate for the framework in use for more details contact me. Documentation can be found at https://github.com/alfZone/chatText/wiki
+Login
+The Login is a system for authentication using google verification. Is indicate for the framework in use for more details contact me. Documentation can be found at https://github.com/alfZone/chatText/wiki
 
 #2 - What's new
 
