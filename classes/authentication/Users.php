@@ -3,7 +3,7 @@
 /**
  * @autores Alf
  * @copyright 2021
- * @ver 1.0
+ * @ver 1.2
  */
 
 namespace classes\authentication;
