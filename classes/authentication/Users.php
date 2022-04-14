@@ -24,7 +24,8 @@ class Users extends LayerDB{
                                 "numberUserAtivos" => 'SELECT count(`id`) as numero FROM `base_utilizadores` where `ativo`=1',
                                 "numberUserAtivosPorTipo" => 'SELECT tipo, count(`id`) as numero FROM `base_utilizadores` where `ativo`=1 GROUP by tipo',
                                 "numberAdmin" => 'SELECT count(`id`) as numero FROM `base_utilizadores` where `ativo`=1 and tipo=3',
-                                "listOfUsers" => 'SELECT id, `nome` as name FROM base_utilizadores WHERE `ativo`=1 order by `nome`'
+                                "listOfUsers" => 'SELECT id, `nome` as name FROM base_utilizadores WHERE `ativo`=1 order by `nome`',
+                                "photoUpdate" => 'UPDATE base_utilizadores SET `photo` = :photo WHERE `id` = :id AND (`photo` <> :photo)'
                                 );
   
    
