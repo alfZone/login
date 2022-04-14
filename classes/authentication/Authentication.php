@@ -1,5 +1,3 @@
-<?php
-namespace classes\authentication;
 @session_start();
 //use classes\db\Database;
 
@@ -10,7 +8,7 @@ namespace classes\authentication;
 /**
  * @author alf
  * @copyright 2019
- * @ver 4.0
+ * @ver 4.2
  */
  
  
@@ -25,6 +23,7 @@ class Authentication{
       //print_r($_SESSION);
     }
     //Save session varibles for autentication
+    //$aut->setAuthentication($user->results[0]['id'], $user->results[0]['nome'], $email, $foto, $user->results[0]['id'],$user->results[0]['tipo']);
     public function setAuthentication($user, $nome, $email, $foto, $id, $level=1){
       $_SESSION['user']=$user;
       $_SESSION['nome']=$nome;
@@ -73,6 +72,12 @@ class Authentication{
     public function getUser(){
       return $_SESSION['user'];
     }
+
+    //get session foto
+    public function getPhoto(){
+      return $_SESSION['foto'];
+    }
+
 
     //get session varible user
     public function getIdUser(){
