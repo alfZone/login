@@ -45,7 +45,7 @@ const renderAutentica = async () => {
 
 function logout(){
   $.get( _SERVIDORaut +`public/autenticacao/logout`, function( data ) {
-  window.location.href = "/public/?d=k";
+  window.location.href = "/notlogged.html";
   //$( ".result" ).html( data );
   //alert( "Load was performed." );
 });
