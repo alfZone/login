@@ -13,8 +13,8 @@ const verificaAutentica = async () => {
   const lv = await response.json()
   for (const v of lv) {
     if (v.user!== null){
-       //document.getElementById("foto").setAttribute("src", v.foto)
-       //document.getElementById("nome").innerHTML =v.nome
+       //document.getElementById("photo").setAttribute("src", v.foto)
+       //document.getElementById("name").innerHTML =v.nome
     }else{
       window.location.href = "/error.html";
     }
@@ -30,10 +30,10 @@ const renderAutentica = async () => {
   const lv = await response.json()
   for (const v of lv) {
     if (v.user!== null){
-       document.getElementById("foto").setAttribute("src", v.foto)
-       document.getElementById("nome").innerHTML =v.nome
+       document.getElementById("photo").setAttribute("src", v.foto)
+       document.getElementById("name").innerHTML =v.nome
     }else{
-      window.location.href = "/public/?d=k";
+      window.location.href = "error";
     }
     
   }
