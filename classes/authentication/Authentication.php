@@ -41,7 +41,7 @@ class Authentication{
         $this->results[0]['nome']=$_SESSION['nome'];
         $this->results[0]['level']=$_SESSION['level'];
         $this->results[0]['email']=$_SESSION['email'];
-        $this->results[0]['foto']=$_SESSION['level'];
+        $this->results[0]['foto']=$_SESSION['foto'];
         $this->results[0]['id']=$_SESSION['id'];
       }else{
         $this->results[0]['user']=null;
