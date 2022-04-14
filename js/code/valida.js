@@ -16,7 +16,7 @@ const verificaAutentica = async () => {
        //document.getElementById("foto").setAttribute("src", v.foto)
        //document.getElementById("nome").innerHTML =v.nome
     }else{
-      window.location.href = "/public/?d=k";
+      window.location.href = "/error.html";
     }
     
   }
