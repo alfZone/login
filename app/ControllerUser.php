@@ -9,8 +9,8 @@ use classes\authentication\Users;
 
 /**
  * @autores alf
- * @copyright 2020
- * @ver 1.0
+ * @copyright 2021
+ * @ver 1.5
  */
 
 
@@ -20,12 +20,14 @@ use classes\authentication\Users;
 
 class ControllerUser{
 
+ 
+
   public function listOfUsers(){
 
-   $pedidos=new Users("listOfUsers"); 
-	 echo $pedidos->webService();
-
-	}
+    $pedidos=new Users("listOfUsers"); 
+    echo $pedidos->webService();
+ 
+   }
   
  public function contarUsers(){
 
@@ -51,13 +53,11 @@ class ControllerUser{
   public function getAutentication(){
     $aut=new Authentication();
     $aut->getAuthentication();
+    //uncomment the next 3 lines for update google photo on database
+    //$p['id']=$aut->getIdUser();
+    //$p['photo']=$aut->getIdUser();
+    //$update=new Users("photoUpdate",$p);
     echo $aut->webService();
- 	}
-  
-  public function logout(){
-    $aut=new Authentication();
-    $aut->logout();
-    
  	}
   
 }
