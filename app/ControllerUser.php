@@ -55,7 +55,7 @@ class ControllerUser{
     $aut->getAuthentication();
     //uncomment the next 3 lines for update google photo on database
     //$p['id']=$aut->getIdUser();
-    //$p['photo']=$aut->getIdUser();
+    //$p['photo']=$aut->getPhoto();
     //$update=new Users("photoUpdate",$p);
     echo $aut->webService();
  	}
