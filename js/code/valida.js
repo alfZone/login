@@ -1,10 +1,10 @@
-const _SERVIDORaut=  window.location.protocol + "//" + window.location.host + "/";
-
 /**
  * @author alf
  * @copyright 2022
- * @ver 1.0
+ * @ver 2.0
  */
+
+const c= new config()
 
 //console.log(_SERVIDORaut)
 
@@ -15,7 +15,7 @@ const verificaAutentica = async () => {
 
   //console.log("ver");
   //alert("ddd");
-  const response = await fetch(_SERVIDORaut +`public/autenticacao/getAutentication`)
+  const response = await fetch(c.url  +`public/autenticacao/getAutentication`)
   const lv = await response.json()
   for (const v of lv) {
     if (v.user!== null){
@@ -32,7 +32,7 @@ const verificaAutentica = async () => {
 const renderAutentica = async () => {
 
   //console.log("ver");
-  const response = await fetch(_SERVIDORaut +`public/autenticacao/getAutentication`)
+  const response = await fetch(c.url +`public/autenticacao/getAutentication`)
   const lv = await response.json()
   for (const v of lv) {
     if (v.user!== null){
@@ -50,7 +50,7 @@ const renderAutentica = async () => {
 //####################################### Autenticação ######################################################
 
 function logout(){
-  $.get( _SERVIDORaut +`public/autenticacao/logout`, function( data ) {
+  $.get( c.url +`public/autenticacao/logout`, function( data ) {
   window.location.href = "/notlogged.html";
   //$( ".result" ).html( data );
   //alert( "Load was performed." );
