@@ -1,5 +1,11 @@
 const _SERVIDORaut=  window.location.protocol + "//" + window.location.host + "/";
 
+/**
+ * @author alf
+ * @copyright 2022
+ * @ver 1.0
+ */
+
 //console.log(_SERVIDORaut)
 
 //####################################### Autenticação ######################################################
