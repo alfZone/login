@@ -4,7 +4,7 @@
  * @ver 2.0
  */
 
-const c= new config()
+var c = c || new config();
 
 //console.log(_SERVIDORaut)
 
