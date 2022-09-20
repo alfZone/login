@@ -1,3 +1,4 @@
+<?php
 @session_start();
 //use classes\db\Database;
 
