@@ -1,4 +1,5 @@
 <?php
+namespace classes\authentication;
 @session_start();
 //use classes\db\Database;
 
