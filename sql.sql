@@ -9,7 +9,8 @@ CREATE TABLE `authUser` (
   `email` varchar(50) NOT NULL,
   `name` varchar(200) NOT NULL,
   `type` int(11) NOT NULL,
-  `active` int(11) NOT NULL DEFAULT 1
+  `active` int(11) NOT NULL DEFAULT 1,
+  `photo` varchar(200) NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
