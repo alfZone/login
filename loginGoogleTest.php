@@ -1,113 +1,150 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt">
+
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Login da Google">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Guia de programas da Televisão, com várias formas de pesquisar a informação e que funciona no telemóvel. 
+                                    Pode procurar filmes e séries automaticamente em todos os canais.
+                                    Poderá escolher os seus canais favoritos e ver o que está a dar neste momento nos seus canais favoritos.">
+  <meta name="keywords" content="box, na-tv.pt, na tv, natv, guiatv, guia tv, tv, televisão, programação tv, canais portugueses, series, filmes,  zon, meo, cabovisao, programas da tv">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://na-tv.pt/">
+  
+  
   <meta name="author" content="António Lira Fernandes">
-  <meta name="google-signin-client_id" content="436091069232-g9n82uk2iua4hpa3unrfrt3iq0gkntb7.apps.googleusercontent.com">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <link rel="icon" type="images/png" sizes="16x16" href="/images/looglemin.png">
-  <!--script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script-->
-  <!--script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script-->
-  <title>Login</title>
-  </head>
+  
+  <meta name="robots" content="index,follow" />
+  <meta name="googlebot" content="index,follow" />
+  
+  <link rel="icon" href="/imagens/retro-tv.png">
+  <title>Exemple</title>
 
-<body class="bg-gradient-primary">
+  <!-- Bootstrap core CSS -->
+  <link href="/templates/bootstrapT/assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/templates/bootstrapT/assets/css/styles.css" rel="stylesheet">
+  <link href="/templates/bootstrapT/assets/css/bootstrapT.css" rel="stylesheet">
 
 
-  <div class="container">
+</head>
 
-    <!-- Outer Row -->
-    <div class="row justify-content-center">
+<body>
+   <script src="https://accounts.google.com/gsi/client" async defer></script>
 
-      <div class="col-xl-10 col-lg-12 col-md-9">
-        <div class="card o-hidden border-0 shadow-lg my-5">
-          <div class="card-body p-0">
-            <!-- Nested Row within Card Body -->
-            <div class="row">
-              <div class="col-lg-5 m-2">
-                <img src="/images/loogle.png"/>
+
+
+
+
+  <main>
+    <div class="album bg-dark">
+      <div class="container-fluid">
+        <div id="main">
+          <h1>Guia Na-Tv e Programação dos Canais</h1>
+          <div class="row"><br><br></div>
+          <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+              <div class="card card-widget widget-user">
+            <!-- Add the bg color to the header using any of the bg-* classes -->
+                <div class="widget-user-header bg-secondary">
+                  <h3 class="widget-user-username">Autenticação</h3>
+                  <p id="msgNome"></p>
+                </div>
+                <div class="widget-user-image" id="msgImg">
+                  <img class="img-circle elevation-2" src="/templates/bootstrapT/images/facePrime.jpg" id="userPhoto" alt="User Avatar">
+                </div>
+                <div class="row"><br><br><br></div>   
+                <div class="row text-center">
+                    <div id="buttonDiv"></div>
+                </div>
+                <div class="row"><br></div>  
+                <div class="card-footer">
+                  <div class="row"><br></div>   
+                  <div class="row">
+                    <div class="col-sm-12 col-md-12 text-center">
+                      <button onclick="" type="button" class="btn btn-primary logPrime btn-block" data-bs-toggle="modal" title="Subscrever Prime" data-bs-target="#frmPrime" size="100%">Registar</button>
+                      <button onclick="lg.logout()" type="button" class="btn btn-warning logout btn-block">Logout</button>  
+                      <button type="button" class="btn btn-warning btn-block" data-bs-dismiss="modal">Fechar</button>
+                    </div>
+                  </div>
+                  <!-- /.row -->
+    
+                </div>
               </div>
-              <div class="col-lg-6 m-2 text-center">
-                <h1>System Login</h1>
-                <!-- <form class="user">  -->
-                <hr>
-                <div id="my-signin2"></div>
-                <div id="msg"></div>
-             </div>
-              
-           </div>
+            </div>
+            <div class="col-md-4"></div>
           </div>
         </div>
-
       </div>
-
     </div>
+  </main>
 
+  <!-- footer-->
+
+  <footer class="text-muted py-5 bg-dark">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-12 text-center py-5">
+          <p>Copyright ©
+            <ddff id="dthh"></ddff>
+            <script>
+              document.getElementById("dthh").innerHTML = new Date().getFullYear();
+            </script> All rights reserved | This template is made with
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill text-warning" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+</svg> by <a href="http://alfzone.com" target="_blank">alf</a></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+      
+  <div id="overlay">
+    <div id="overlay-content">
+     Subscreva um conta Prime de borla. <br>Só precisa de um email Gmail.<br><br>
+      <button onclick="" type="button" class="btn btn-primary logPrime" data-bs-toggle="modal" title="Subscrever Prime" data-bs-target="#frmPrime">Subscrever Prime</button>
+    </div>
   </div>
+
+
+
+
+<script src="https://code.jquery.com/jquery-1.8.0.min.js"></script>
+<script src="/templates/bootstrapT/assets/js/bootstrap.bundle.min.js"></script>
+<script src="/templates/bootstrapT/assets/js/input-spinner.js"></script>
+<script src="/js/code/config.js"></script>
+<script src="/js/code/loginGoogle.js?227"></script>
+<script src="https://unpkg.com/jwt-decode/build/jwt-decode.js"></script>
+<!--script src="/js/alertImproved/alertI.js"></script>
+<script src="/js/code/bootstrapT.js"></script>
+<script src="/js/code/tmdb.js"></script>
+<script src="/js/code/gestor.js"></script>
+<script src="/js/code/programas.js"></script>
+<script src="/js/code/valida.js"></script-->
+
+<script>
+
+  var lg=new loginGoogle();
+
+  window.onload = function () {
   
-  <!-- Bootstrap core JavaScript-->
-  <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
-  <!--script src="/templates/startbootstrap_admin_2/vendor/bootstrap/js/bootstrap.bundle.min.js"></script-->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  //var lg=new loginGoogle();
   
-  <script>
-    function onSignIn(googleUser) {
-      var profile = googleUser.getBasicProfile();
-      var userID = profile.getId();
-      var userName = profile.getName();
-      var userPicture = profile.getImageUrl();
-      var userEmail = profile.getEmail();
-      var userToken = googleUser.getAuthResponse().id_token;
-      //alert("dffsdfsdfsdfs");
-      document.getElementById("msg").innerHTML = userEmail;
-      //alert(userEmail)
-      if (userEmail !== '') {
-        var dados = {
-          userID: userID,
-          userName: userName,
-          userPicture: userPicture,
-          userEmail: userEmail
-        }
-       alert(dados.userID);
-       $.post('/public/validacaoLogin', dados, function(retorna) {
-          alert(retorna);
-          if (retorna === "erro") {
-            var msg = "O/A " + userName + " não tem acesso ao sistema!";
-            document.getElementById('msg').innerHTML = msg;
-            document.getElementById('msg').setAttribute("class", "text-danger")
-          } else {
-            window.location.href = "/public/admin";
-          }
-        });
-
-      } else {
-        var msg = "Utilizador não encontrado";
-        document.getElementById("msg").innerHTML = msg;
-      }
-
-
-    }
-
-    function renderButton() {
-      gapi.signin2.render('my-signin2', {
-        'scope': 'profile email',
-        'width': '250px',
-        'height': 37, 
-        'longtitle': true,
-        'theme': 'dark',
-        'onsuccess': onSignIn
-
-      });
-    }
-    
-    
-    
-  </script>
+  lg.getAuthentication();
   
+  google.accounts.id.initialize({
+    client_id: "YOUR GOOGLE ID",
+    callback: lg.handleCredentialResponse
+  });
+ google.accounts.id.renderButton(
+  document.getElementById("buttonDiv"),   //name of the div within the button
+  { theme: "filled_blue", size: "large"}  // customization attributes
+ );
+ google.accounts.id.prompt(); // also display the One Tap dialog
+}
+  
+</script>
 
 </body>
 
