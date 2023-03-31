@@ -1,6 +1,8 @@
 <?php
 namespace classes\authentication;
 @session_start();
+
+
 //use classes\db\Database;
 
 //https://console.cloud.google.com/apis/credentials?project=serene-circlet-163208
@@ -10,7 +12,7 @@ namespace classes\authentication;
 /**
  * @author alf
  * @copyright 2019
- * @ver 4.2
+ * @ver 4.3
  */
  
  
@@ -30,7 +32,7 @@ class Authentication{
       $_SESSION['user']=$user;
       $_SESSION['nome']=$nome;
       $_SESSION['level']=$level;
-      $_SESSION['email']=$level;
+      $_SESSION['email']=$email;
       $_SESSION['foto']=$foto;
       $_SESSION['id']=$id;
     }
