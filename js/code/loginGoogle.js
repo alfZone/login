@@ -50,7 +50,7 @@ class loginGoogle {
 window.onload = function() {
   var lg = new loginGoogle();
   google.accounts.id.initialize({
-    client_id: "436091069232-6a0okqf1hkplhc13gtbt84c4j3sor18f.apps.googleusercontent.com",
+    client_id: "ID_GOOGLE_CLIENTE",
     callback: lg.handleCredentialResponse
   });
   google.accounts.id.renderButton(
