@@ -20,7 +20,7 @@ ini_set("error_reporting", E_ALL);
 
 class Users extends LayerDB{
  
-  public $instrucaoSQL = array ("login"=>'SELECT id, `nome`, `email`, `tipo`  FROM `base_utilizadores` WHERE `email`=:email and ativo=1',
+  public $instrucaoSQL = array ("loginGoogle"=>'SELECT `id`, `email`, `name`, `type`  FROM `authUser` WHERE `email`=:email and active=1',
                                 "numberUserAtivos" => 'SELECT count(`id`) as numero FROM `base_utilizadores` where `ativo`=1',
                                 "numberUserAtivosPorTipo" => 'SELECT tipo, count(`id`) as numero FROM `base_utilizadores` where `ativo`=1 GROUP by tipo',
                                 "numberAdmin" => 'SELECT count(`id`) as numero FROM `base_utilizadores` where `ativo`=1 and tipo=3',
@@ -43,7 +43,6 @@ class Users extends LayerDB{
       case "updUsers":
             $this->execQuery($accao, $parameters);
             break;
-      case "login":
       case "numberUserAtivos":
       case "numberUserAtivosPorTipo":
       case "numberAdmin":
