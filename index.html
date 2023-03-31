@@ -1,71 +1,163 @@
 <!DOCTYPE html>
 <html lang="pt">
-
 <head>
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/looglemin.png">
-  <meta charset=”UTF-8”>
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Login Google</title>
+  <title>AdminLTE 3 | Log in (v2)</title>
+
+  <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://www.esmonserrate.org/templates/AdminLTE/plugins/fontawesome-free/css/all.min.css">
-  <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="https://www.esmonserrate.org/templates/AdminLTE/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/templates/AdminLTE/plugins/fontawesome-free/css/all.min.css">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="/templates/AdminLTE/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="https://www.esmonserrate.org/templates/AdminLTE/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="/templates/AdminLTE/dist/css/adminlte.min.css">
+ 
 </head>
-
-<body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
-  <div class="wrapper">
-    <!-- Preloader -->
-    <nav class="main-header navbar navbar-expand navbar-dark">
-      <!-- Right navbar links -->
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-          <img src="https://www.esmonserrate.org/images/user.png" alt="AdminLTE Logo" id="photo" class="brand-image img-circle elevation-3" style="opacity: .8">
-          <span class="brand-text font-weight-light" ><small id="name">Administração</small></span>
-        </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" onclick="logout()" href="#" role="button">
-          <i class="fas fa-door-open"></i>
-        </a>
-        </li>
-      </ul>
-    </nav>
-
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-      <!-- Content Header (Page header) -->
-      <div class="content-header">
-        <div class="container-fluid">
-          <div class="row mb-2">
-            <div class="col-sm-6">
-              <h1 class="m-0">Logged Zone</h1>
-            </div>
-          </div>
-          <!-- /.row -->
-        </div>
-        <!-- /.container-fluid -->
-      </div>
-      <!-- /.content-header -->
+<body class="hold-transition login-page">
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  
+  
+<div class="login-box">
+  <!-- /.login-logo -->
+  
+  
+  <div class="card card-outline card-primary">
+    <div class="card-header text-center">
+      <h1><b>Admin</b>LTE</h1>
     </div>
-    <!-- /.content-wrapper -->
+    <div class="card-body">
+      <p class="login-box-msg">Login para iniciar a sessão</p>
+
+      <div class="social-auth-links text-center mt-2 mb-3">
+      <script src="https://unpkg.com/jwt-decode/build/jwt-decode.js"></script>
+      <script src="/js/code/config.js"></script>
+      <script src="/js/code/loginGoogle.js"></script>
+  <script >
+    
+    
+  
+    
+    /*
+        function handleCredentialResponse(response) {
+          console.log("Encoded JWT ID token: " + response.credential);
+          const responsePayload = jwt_decode(response.credential);
+          console.log("Email: " + responsePayload.email);
+          console.log("email_verified: " + responsePayload.email_verified);
+          console.log("name: " + responsePayload.name);
+          console.log("picture: " + responsePayload.picture);
+        }
+        window.onload = function () {
+          google.accounts.id.initialize({
+            client_id: "436091069232-6a0okqf1hkplhc13gtbt84c4j3sor18f.apps.googleusercontent.com",
+            callback: handleCredentialResponse
+          });
+          
+          google.accounts.id.renderButton(
+            document.getElementById("buttonDiv"),
+            { theme: "filled_blue", size: "large"}  // customization attributes
+          );
+          google.accounts.id.prompt(); // also display the One Tap dialog
+          
+        }
+     */
+    </script>
+    <div id="buttonDiv"></div> 
+    <div id="msg"></div> 
+        
+      </div>
+      <!-- /.social-auth-links -->
+
+    </div>
+    <!-- /.card-body -->
   </div>
-  <!-- ./wrapper -->
+  <!-- /.card -->
+  
 
-  <!-- REQUIRED SCRIPTS -->
-  <!-- jQuery -->
-  <script src="https://www.esmonserrate.org//templates/AdminLTE/plugins/jquery/jquery.min.js"></script>
-  <!-- Bootstrap -->
-  <script src="https://www.esmonserrate.org//templates/AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- AdminLTE App -->
-  <script src="https://www.esmonserrate.org//templates/AdminLTE/dist/js/adminlte.js"></script>
-  <script src="/js/code/valida.js"></script>
-  <script>
-    renderAutentica();
+  
+</div>
+<!-- /.login-box -->
+
+<!-- jQuery -->
+<script src="/templates/AdminLTE/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="/templates/AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/templates/AdminLTE/dist/js/adminlte.min.js"></script>
+  
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  
+    <script>
+    /*
+    function onFailure() { console.log('Sign in has failed!'); }
+        
+    function onSignIn(googleUser) {
+    alert("asdasds")
+    var profile = googleUser.getBasicProfile();
+    //console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+    //console.log('Name: ' + profile.getName());
+    //console.log('Image URL: ' + profile.getImageUrl());
+    //console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+    var profile = googleUser.getBasicProfile();
+    var userID = profile.getId(); // Do not send to your backend! Use an ID token instead.
+    var userName = profile.getName();
+    var userImageURL = profile.getImageUrl();
+    var userEmail = profile.getEmail(); // This is null if the 'email' scope is not present.
+    var userToken = googleUser.getAuthResponse().id_token;
+    //document.getElementById("msgImg").innerHTML = "<img src='" + userImageURL + "' width='80' height='80' class='img-circle elevation-2'>";
+    //document.getElementById("msgNome").innerHTML = userName;
+    //document.getElementById("btlogin").innerHTML = "<img src='" + userImageURL + "' width='20' height='20' class='rounded'>"
+
+    if (userEmail !== '') {
+      var dados = {
+        userID: userID,
+        userName: userName,
+        userImageURL: userImageURL,
+        userEmail: userEmail
+      };
+      $.post('/public/validacaoLogin', dados, function(retorna) {
+        //alert(retorna);
+        if (retorna === "erro") {
+          var msg = "O/A " + userName + " não tem acesso ao sistema!";
+          document.getElementById('msg').innerHTML = msg;
+          var x = document.getElementsByClassName("logout");
+          for (var i = 0; i < x.length; i++) {
+            x[i].disabled = true;
+          }
+        } else {
+          //window.location.href = retorna;
+          document.getElementById("msgImg").innerHTML = "<img src='" + userImageURL + "' width='80' height='80' class='img-circle elevation-2'>";
+          document.getElementById("fotoUser").src = userImageURL;
+          //console.log(userImageURL)
+          document.getElementById("msgNome").innerHTML = userName;
+
+          var x = document.getElementsByClassName("logout");
+          for (var i = 0; i < x.length; i++) {
+            x[i].disabled = false;
+          }
+
+          var x = document.getElementsByClassName("logPrime");
+          for (var i = 0; i < x.length; i++) {
+            x[i].disabled = true;
+          }
+          //document.location.reload(true);
+          autenticacao()
+        }
+      });
+    } else {
+      var msg = "Não está nenhuma utilizador autenticado";
+      document.getElementById('msg').innerHTML = msg;
+      var x = document.getElementsByClassName("logout");
+      for (var i = 0; i < x.length; i++) {
+        x[i].disabled = true;
+      }
+    }
+
+  }
+    */
   </script>
+  
+  
 </body>
-
 </html>
