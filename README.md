@@ -23,6 +23,8 @@
 Login
 The Login is a system for authentication using google verification. Is indicate for the framework in use for more details contact me. Documentation can be found at https://github.com/alfZone/login/wiki
 
+https://console.cloud.google.com/apis/credentials?hl=pt-br&project=serene-circlet-163208 for create an account.
+
 # 2 - What's new
 
 # 3 - Corrected bugs
