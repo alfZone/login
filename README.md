@@ -31,6 +31,8 @@ https://console.cloud.google.com/apis/credentials?hl=pt-br&project=serene-circle
 
 # 4 - Known bugs or limitations
 
+He must use an HTTPS URL to accomplish Google authentication.
+
 Does not allow sending the same message to multiple destinations.
 
 # 5 - License
