@@ -14,8 +14,8 @@ use classes\authentication\Users;
 
 class ControllerLoginGoogle{
 
-  private $urlLoginOk="https://" . _SITE . "/public/";
-  private $urlLoginError="https://" . _SITE . "/public/autenticacao/erro";
+  private $urlLoginOk="https://" . _SITE . "/public/";                            /url a login sucesscifully
+  private $urlLoginError="https://" . _SITE . "/public/autenticacao/erro";        /url a login error
 
   public function loginValidation(){
     
