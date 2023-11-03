@@ -1,8 +1,18 @@
 /**
  * @author alf
  * @copyright 2022
- * @ver 1.0
+ * @ver 2.0
  */
+
+ function decodeJwtResponse(token) {
+  var base64Url = token.split('.')[1];
+  var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+  var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
+    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+  }).join(''));
+
+    return JSON.parse(jsonPayload);
+  }
 
 class loginGoogle {
 
@@ -10,7 +20,7 @@ class loginGoogle {
 
   handleCredentialResponse(response) {
     //console.log("Encoded JWT ID token: " + response.credential);
-    const responsePayload = jwt_decode(response.credential);
+    const responsePayload = decodeJwtResponse(response.credential);
     //console.log("Email: " + responsePayload.email);
     //console.log("email_verified: " + responsePayload.email_verified);
     //console.log("name: " + responsePayload.name);
