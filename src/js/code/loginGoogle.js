@@ -19,6 +19,7 @@ class loginGoogle {
   constructor() {}
 
   handleCredentialResponse(response) {
+    //console.log(response.credential);
     //console.log("Encoded JWT ID token: " + response.credential);
     const responsePayload = decodeJwtResponse(response.credential);
     //console.log("Email: " + responsePayload.email);
@@ -31,9 +32,10 @@ class loginGoogle {
       var dados = {
         userName: responsePayload.name,
         userImageURL: responsePayload.picture,
-        userEmail: responsePayload.email
+        userEmail: responsePayload.email,
+        userToken: response.credential
       };
-      $.post('/public/autenticacao/validacaoLogin', dados, function(retorna) {
+      $.post('/api/loginValidation', dados, function(retorna) {
         //alert(retorna);
         //console.log(retorna.localeCompare("erro"));
         //console.log(retorna);

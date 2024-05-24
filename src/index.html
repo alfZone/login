@@ -1,19 +1,14 @@
 <!DOCTYPE html>
-<!-- 
-/**
- * @author alf
- * @copyright 2024
- * @ver 1.0
- */
- 
-
--->
 <html lang="pt">
-
 <head>
+  <meta name="description" content="Login da Google">
+  <meta name="author" content="Ant坦nio Lira Fernandes">
+  <link rel="icon" type="images/png" sizes="16x16" href="/images/looglemin.png">
+  <meta name="google-signin-client_id" content="436091069232-6a0okqf1hkplhc13gtbt84c4j3sor18f.apps.googleusercontent.com">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Administrator| Log in</title>
+  <title>AdminLTE 3 | Log in (v2)</title>
+
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
@@ -22,38 +17,125 @@
   <link rel="stylesheet" href="/templates/AdminLTE/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="/templates/AdminLTE/dist/css/adminlte.min.css">
-</head>
+  
+  <title>Login</title>
+  </head>
 <body class="hold-transition login-page">
-  <script src="https://accounts.google.com/gsi/client" async defer></script>
-  <div class="login-box">
-    <!-- /.login-logo -->
-    <div class="card card-outline card-primary">
-      <div class="card-header text-center">
-        <h1><b>Admin</b>Google</h1>
-      </div>
-      <div class="card-body">
-        <p class="login-box-msg">Login para iniciar a sessão</p>
-        <div class="social-auth-links text-center mt-2 mb-3">
-          <script src="https://unpkg.com/jwt-decode/build/jwt-decode.js"></script>
-          <script src="/js/code/config.js"></script>
-          <script src="/js/code/loginGoogle.js"></script>
-          <div id="buttonDiv"></div>
-          <div id="msg"></div>
+  <div class="container">
+    <!-- Outer Row -->
+    <div class="row justify-content-center">
+      <div class="col-xl-10 col-lg-12 col-md-9">
+        <div class="card o-hidden border-0 shadow-lg my-5">
+          <div class="card-body p-0">
+            <!-- Nested Row within Card Body -->
+           
+          </div>
         </div>
-        <!-- /.social-auth-links -->
       </div>
-      <!-- /.card-body -->
     </div>
-    <!-- /.card -->
   </div>
-  <!-- /.login-box -->
+  
+  <div class="login-box">
+  <!-- /.login-logo -->
+  <div class="card card-outline card-primary">
+    <div class="card-header text-center">
+      <h1><b>Admin</b>LTE</h1>
+    </div>
+    <div class="card-body">
+      <p class="login-box-msg">Login para iniciar a sess達o</p>
 
-  <!-- jQuery -->
+      <div class="row">
+               <script src="https://accounts.google.com/gsi/client" async defer></script>
+              <div class="col-lg-6 m-2 text-center">
+              
+                <hr>
+                 <div id="g_id_onload" 
+                      data-client_id="436091069232-6a0okqf1hkplhc13gtbt84c4j3sor18f.apps.googleusercontent.com"
+                      data-login_uri="https://justicaepazviana.pt/public/autenticacao/validacaoLogin"
+                      data-auto_prompt="false"
+                      data-auto_selectsss="true">
+                </div>
+                <div class="g_id_signin"
+                     data-type="standard"
+                     data-size="large"
+                     data-theme="filled_blue"
+                     data-text="sign_in_with"
+                     data-shape="rectangular"
+                     
+                     data-logo_alignment="left"
+                     data-onsuccess="onSignIn">
+                  </div>
+
+               
+             </div>
+              
+           </div>
+
+        
+      </div>
+      <!-- /.social-auth-links -->
+    </div>
+    <!-- /.card-body -->
+  </div>
+  <!-- /.card -->
+</div>
+  
   <script src="/templates/AdminLTE/plugins/jquery/jquery.min.js"></script>
-  <!-- Bootstrap 4 -->
-  <script src="/templates/AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- AdminLTE App -->
+<!-- Bootstrap 4 -->
+<script src="/templates/AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
   <script src="/templates/AdminLTE/dist/js/adminlte.min.js"></script>
-  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  
+  <!-- Bootstrap core JavaScript-->
+ 
+  <!--script src="/templates/startbootstrap_admin_2/vendor/bootstrap/js/bootstrap.bundle.min.js"></script-->
+
+<!--script src="https://apis.google.com/js/platform.js" async defer></script-->
+  
+  <script>
+    
+    function onFailure() { console.log('Sign in has failed!'); }
+        
+    function onSignIn(googleUser) {
+      console.log("tentar o login");
+       alert("que bem")
+      var profile = googleUser.getBasicProfile();
+      var userID = profile.getId();
+      var userName = profile.getName();
+      var userPicture = profile.getImageUrl();
+      var userEmail = profile.getEmail();
+      var userToken = googleUser.getAuthResponse().id_token;
+      alert("dffsdfsdfsdfs");
+      document.getElementById("msg").innerHTML = userEmail;
+      //alert(userEmail)
+      if (userEmail !== '') {
+        var dados = {
+          userID: userID,
+          userName: userName,
+          userPicture: userPicture,
+          userEmail: userEmail
+        }
+       alert(dados.userID);
+       $.post('/public/admin/valida', dados, function(retorna) {
+          alert(retorna);
+          if (retorna === "erro") {
+            var msg = "O/A " + userName + " n達o tem acesso ao sistema!";
+            document.getElementById('msg').innerHTML = msg;
+            document.getElementById('msg').setAttribute("class", "text-danger")
+          } else {
+            window.location.href = "/public/admin";
+          }
+        });
+      } else {
+        var msg = "Utilizador n達o encontrado";
+        document.getElementById("msg").innerHTML = msg;
+      }
+    }
+    
+  </script>
+  <!-- jQuery -->
+
+  
+  
 </body>
 </html>

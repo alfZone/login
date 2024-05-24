@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!-- 
+/**
+ * @author alf
+ * @copyright 2024
+ * @ver 1.0
+ */
+ 
+
+-->
+<html lang="pt">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Administrator| Log in</title>
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/templates/AdminLTE/plugins/fontawesome-free/css/all.min.css" />
+    <!-- icheck bootstrap -->
+    <link rel="stylesheet" href="/templates/AdminLTE/plugins/icheck-bootstrap/icheck-bootstrap.min.css" />
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/templates/AdminLTE/dist/css/adminlte.min.css" />
+  </head>
+  <body class="hold-transition login-page">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <div class="login-box">
+      <!-- /.login-logo -->
+      <div class="card card-outline card-primary">
+        <div class="card-header text-center">
+          <h1><b>Admin</b>Google</h1>
+        </div>
+        <div class="card-body">
+          <p class="login-box-msg">Login para iniciar a sessão</p>
+          <div class="social-auth-links text-center mt-2 mb-3">
+            <script src="https://unpkg.com/browse/jwt-decode@4.0.0-beta.1/build/cjs/jwt-decode.js"></script>
+            <!--<script src="/js/code/jwt-decode.js"></script>-->
+            <script src="/js/code/config.js"></script>
+            <script src="/js/code/loginGoogle.js"></script>
+            <div id="buttonDiv"></div>
+            <div id="msg"></div>
+          </div>
+          <!-- /.social-auth-links -->
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+    </div>
+    <!-- /.login-box -->
+
+    <!-- jQuery -->
+    <script src="/templates/AdminLTE/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="/templates/AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="/templates/AdminLTE/dist/js/adminlte.min.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+  </body>
+</html>
