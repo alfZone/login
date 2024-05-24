@@ -1,33 +1,25 @@
 <?php
 namespace classes\authentication;
-@session_start();
-
-
-//use classes\db\Database;
 
 //https://console.cloud.google.com/apis/credentials?project=serene-circlet-163208
 //https://docs.microsoft.com/pt-br/azure/active-directory/develop/v2-oauth2-auth-code-flow
 
-
 /**
  * @author alf
- * @copyright 2019
- * @ver 4.3
+ * @copyright 2024
+ * @ver 5.0
  */
  
- 
- 
-//echo "aqui";
 class Authentication{
     
 	  public $results;  
 	   
     public function __construct(){
-      //session_start();
-      //print_r($_SESSION);
+			if (session_status()!== PHP_SESSION_ACTIVE){
+				session_start();
+			}
     }
     //Save session varibles for autentication
-    //$aut->setAuthentication($user->results[0]['id'], $user->results[0]['nome'], $email, $foto, $user->results[0]['id'],$user->results[0]['tipo']);
     public function setAuthentication($user, $nome, $email, $foto, $id, $level=1){
       $_SESSION['user']=$user;
       $_SESSION['nome']=$nome;
@@ -69,6 +61,9 @@ class Authentication{
       $_SESSION['user']=null;
       $_SESSION['nome']=null;
       $_SESSION['level']=null;
+      $_SESSION['email']=null;
+      $_SESSION['foto']=null;
+      $_SESSION['id']=null;
     }
     
   
