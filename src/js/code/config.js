@@ -1,7 +1,7 @@
 /**
  * @author alf
  * @copyright 2022
- * @ver 1.1
+ * @ver 2.0
  */
 
 
@@ -22,6 +22,10 @@
     
     
     get url() {
-      return  window.location.protocol + "//" + window.location.host + "/2do/";
+      return  window.location.protocol + "//" + window.location.host + "/";
+    }
+
+    get urlRenderAutentication() {
+      return  this.url() + "/public/autenticacao/getAutentication";
     }
   }

@@ -1,7 +1,7 @@
 /**
  * @author alf
- * @copyright 2022
- * @ver 2.0
+ * @copyright 2024
+ * @ver 3.0
  */
 
  function decodeJwtResponse(token) {
@@ -16,61 +16,56 @@
 
 class loginGoogle {
 
-  constructor() {}
-
-  handleCredentialResponse(response) {
-    //console.log(response.credential);
-    //console.log("Encoded JWT ID token: " + response.credential);
-    const responsePayload = decodeJwtResponse(response.credential);
-    //console.log("Email: " + responsePayload.email);
-    //console.log("email_verified: " + responsePayload.email_verified);
-    //console.log("name: " + responsePayload.name);
-    //console.log("picture: " + responsePayload.picture);
-
-
-    if (responsePayload.email !== '') {
-      var dados = {
-        userName: responsePayload.name,
-        userImageURL: responsePayload.picture,
-        userEmail: responsePayload.email,
-        userToken: response.credential
-      };
-      $.post('/api/loginValidation', dados, function(retorna) {
-        //alert(retorna);
-        //console.log(retorna.localeCompare("erro"));
-        //console.log(retorna);
-        if (retorna == 0) {
-          var msg = "O/A " + responsePayload.name + " não tem acesso ao sistema!";
-          document.getElementById('msg').innerHTML = msg;
-        } else {
-          //alert ("não deu erro não não")
-          //console.log(retorna);
-          window.location.href = retorna
-        }
-      });
-    } else {
-      var msg = "Não está nenhuma utilizador autenticado";
-      document.getElementById('msg').innerHTML = msg;
-      var x = document.getElementsByClassName("logout");
-      for (var i = 0; i < x.length; i++) {
-        x[i].disabled = true;
-      }
-    }
+  constructor() {
+    this.c=new config();
   }
+
+//render the authenticated user information
+async renderAutentica(){
+
+  //console.log("ver");
+  const response = await fetch(this.c.urlRenderAutentication)
+  const lv = await response.json()
+  for (const v of lv) {
+    if (v.user!== null){
+       document.getElementById("photo").setAttribute("src", v.foto)
+       document.getElementById("name").innerHTML =v.nome
+    }else{
+      window.location.href = this.c.urlLogin;
+    }
+    
+  }
+ 
+}
+
+//check if there is an authenticated user
+async verificaAutentica(){
+
+  const response = await fetch(this.c.urlRenderAutentication)
+  const lv = await response.json()
+  for (const v of lv) {
+    if (v.user!== null){
+      //dfdsfdsfsdf
+    }else{
+      window.location.href = this.c.urlLogin;
+    }
+    
+  }
+ 
+}
+
+async logout(){
+
+    const response = await fetch(this.c.urlLogout);
+    window.location.href = this.c.urlLogin;
+ 
+}
+
 }
 
 window.onload = function() {
+  var c= new config();
   var lg = new loginGoogle();
-  google.accounts.id.initialize({
-    client_id: "ID_GOOGLE_CLIENTE",
-    callback: lg.handleCredentialResponse
-  });
-  google.accounts.id.renderButton(
-    document.getElementById("buttonDiv"), //name of the div within the button
-    {
-      theme: "filled_blue",
-      size: "large"
-    } // customization attributes
-  );
-  google.accounts.id.prompt(); // also display the One Tap dialog
+
+  lg.renderAutentica();
 }
