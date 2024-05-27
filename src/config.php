@@ -22,7 +22,7 @@ define("_SERVER", 'localhost');
 define("_SITE", 'Login Google');
 define("_DOMINIO", '....');
 
-//Database credentiails
+//ID GOODLE
 define("_GOOGLEID", 'YOUR_GOOGLE_CLIENT_ID');
 
 //Database credentiails
