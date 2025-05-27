@@ -5,7 +5,7 @@
  */
 
 
- class config {
+ class Config {
   
   
     constructor() {
