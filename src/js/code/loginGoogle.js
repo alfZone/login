@@ -1,7 +1,7 @@
 /**
  * @author alf
  * @copyright 2024
- * @ver 3.0
+ * @ver 3.1
  */
 
  function decodeJwtResponse(token) {
@@ -17,7 +17,7 @@
 class loginGoogle {
 
   constructor() {
-    this.c=new config();
+    this.c=new Config();
   }
 
 //render the authenticated user information
