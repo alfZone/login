@@ -28,4 +28,12 @@
     get urlRenderAutentication() {
       return  this.url() + "/public/autenticacao/getAutentication";
     }
+
+  get urlLogout() {
+    return this.url + "/public/autenticacao/logout";
+  }
+
+  get urlLogin() {
+    return this.url + "/public/admin/login";
+  }
   }
