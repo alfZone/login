@@ -32,13 +32,12 @@ https://console.cloud.google.com/apis/credentials?hl=pt-br&project=serene-circle
 
 He must use an HTTPS URL to accomplish Google authentication.
 
-Does not allow sending the same message to multiple destinations.
 
 # 5 - License
 
 Is released under GNU/LGPL license. This library is free, so you can use it at no cost.
 
-I will also appreciate that you send me a mail (alf@esmonserrate.org), just to be aware that someone is using #tabledb.
+I will also appreciate that you send me a mail (alf@esmonserrate.org), just to be aware that someone is using #Login.
 
 For more information about GNU/LGPL license : http://www.gnu.org
 
