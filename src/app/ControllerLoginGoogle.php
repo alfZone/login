@@ -3,10 +3,12 @@
 /**
  * @autores alf
  * @copyright 2024
- * @ver 1.0
+ * @ver 2.0
  */
 
 namespace app;
+use src\Connection;
+use PDO;
 
 use classes\authentication\Authentication;
 use classes\authentication\Users;
@@ -17,6 +19,25 @@ require_once('../vendor/autoload.php');
 
 class ControllerLoginGoogle{
 
+    private $conn;
+    private $database;
+
+    public function __construct() {
+        $this->database = new Connection();
+        $this->conn = $this->database->getConnection();
+    }
+
+    // Obter um user por email
+    public function getUserbyEmail($email, $json=true) {
+        $p['email']=$email;
+        $user = $this->database->getData("SELECT `id`, `name`, `email`,`type` FROM `authUser` WHERE `email`=:email and active=1",$p);
+        if ($json){
+          echo json_encode($user);
+        }else{
+          return $user;
+        }
+      }
+
     public function validaLogin(){
     
       //verifica os campos obrigatórios
@@ -25,7 +46,7 @@ class ControllerLoginGoogle{
         exit;
       }else{
         //apanhar o csrf
-        $cookie= $_COOKIE['g_csrf_token'] ?? '';
+        $cookie = isset($_COOKIE['g_csrf_token']) ? $_COOKIE['g_csrf_token'] : '';
         //compara se a sessão é a mesma.
         if ($_POST['g_csrf_token'] !=$cookie){
           //se não for na mesma sessão volta para o login
@@ -39,16 +60,22 @@ class ControllerLoginGoogle{
           
           //verifica se o payload tem email
           if (isset($payload['email'])) {
-            print_r($payload);
+            //print_r($payload);
             //echo "<br>";
             $email = $payload['email'];
             $foto=  $payload['picture'];
-            $p['email']=$email;
-            $user= new Users("loginGoogle",$p);
+            //$p['email']=$email;
+            //$user= new Users("loginGoogle",$p);
+            $user= $this->getUserbyEmail($email, false);
             //verifica se email existe na base de dados
-            if($user->results[0]['numElements']!=0){
+            //echo "<br>Resultado da pesquisa na base de dados:<br>";
+            //print_r(sizeof($user));
+            //exit;
+            
+            if(sizeof($user)>0){
               $aut= new Authentication();
-              $aut->setAuthentication($user->results[0]['id'], $user->results[0]['name'], $email, $foto, $user->results[0]['id'], $user->results[0]['type']);
+              
+              $aut->setAuthentication($user[0]['id'], $user[0]['name'], $email, $foto, $user[0]['id'], $user[0]['type']);
               header("location: " . _CAMINHO_BACKEND);
               exit;
             }else {
