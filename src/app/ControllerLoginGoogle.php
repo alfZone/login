@@ -2,7 +2,7 @@
 
 /**
  * @autores alf
- * @copyright 2024
+ * @copyright 2025
  * @ver 2.0
  */
 
