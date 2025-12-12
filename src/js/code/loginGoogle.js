@@ -64,7 +64,7 @@ async logout(){
 }
 
 window.onload = function() {
-  var c= new config();
+  var c= new Config();
   var lg = new loginGoogle();
 
   lg.renderAutentica();
