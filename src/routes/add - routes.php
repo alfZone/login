@@ -6,7 +6,6 @@ Route::get('/admin/in', function(){require _CAMINHO_TEMPLATE_ADMIN. "index.php";
 
 Route::get(['set' => '/autenticacao/logout', 'as' => 'loginGoogle.logout'], 'ControllerLoginGoogle@logout');
 Route::get(['set' => '/autenticacao/getAutentication', 'as' => 'LoginGoogle.getAutentication'], 'ControllerLoginGoogle@getAutentication');
-Route::get(['set' => '/autenticacao/logout', 'as' => 'LoginGoogle.logout'], 'ControllerLoginGoogle@logout');
 
 Route::get(['set' => '/autenticacao/validacaoLogin', 'as' => 'LoginGoogle.logout'], 'ControllerLoginGoogle@validaLogin');
 Route::post(['set' => '/autenticacao/validacaoLogin', 'as' => 'LoginGoogle.logout'], 'ControllerLoginGoogle@validaLogin');
