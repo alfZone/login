@@ -26,7 +26,7 @@
     }
 
     get urlRenderAutentication() {
-      return  this.url() + "/public/autenticacao/getAutentication";
+      return  this.url + "/public/autenticacao/getAutentication";
     }
 
   get urlLogout() {
