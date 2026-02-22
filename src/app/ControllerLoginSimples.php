@@ -36,9 +36,8 @@ class ControllerLoginSimples
     $p['user'] = $user;
     $p['passw'] = md5($passw);
     print_r($p);
-    $user = $this->database->getData("SELECT fctEmpresasCurso.`NIF` as id, fctEmpresasCurso.`NIF` as user, fctEmpresas.NomeEmpresa, fctEmpresas.Email 
-                                      FROM `fctEmpresasCurso` inner join fctEmpresas on fctEmpresasCurso.NIF=fctEmpresas.NIF 
-                                      WHERE fctEmpresasCurso.`NIF`=:user and passw=:passw", $p);
+    $user = $this->database->getData("SELECT `id`, `nome`, `email`, `passw`, `gmail`, `ativo`, `adm` FROM `colUtilizador` 
+                                  WHERE `ativo`=1 and  email=:user and passw=:passw", $p);
     if ($json) {
       echo json_encode($user);
     } else {
@@ -69,7 +68,7 @@ class ControllerLoginSimples
     //print_r($_REQUEST);
 
     if (!isset($_POST['user']) || !isset($_POST['passw'])) {
-      header('location: ' . _CAMINHO_LOGIN . '?e=400');
+      header('location: ' . _PATH_TO_LOGIN . '?e=400');
       exit;
     } else {
       $user = $this->getUserByUserPass($_POST['user'], $_POST['passw'], false);
@@ -82,13 +81,13 @@ class ControllerLoginSimples
       if ($user[0]['numElements'] > 0) {
         $aut = new Authentication();
         //setAuthentication($user, $name,$email, $foto, $id, $level=1)
-        $aut->setAuthentication($user[0]['id'], $user[0]['NomeEmpresa'], $user[0]['Email'], '', $user[0]['id'], "empresa");
+        $aut->setAuthentication($user[0]['id'], $user[0]['nome'], $user[0]['email'], '', $user[0]['id'], $user[0]['adm']);
         header("location: " . _CAMINHO_BACKEND_EMPRESAS);
         exit;
       } else {
         //o apy load não tem email
         //die('Problemas com a API da google');
-        header('location: ' . _CAMINHO_LOGIN . '?e=401');
+        header('location: ' ._PATH_TO_LOGIN . '?e=401');
         exit;
       }
     }
