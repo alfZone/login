@@ -21,19 +21,15 @@
     }
     
     
-    get url() {
-      return  window.location.protocol + "//" + window.location.host + "/";
-    }
-
-    get urlRenderAutentication() {
-      return  this.url + "/public/autenticacao/getAutentication";
-    }
-
-  get urlLogout() {
-    return this.url + "/public/autenticacao/logout";
-  }
-
-  get urlLogin() {
-    return this.url + "/public/admin/login";
-  }
+     get urlRenderAutentication() {
+       return  this.url + "PATH_TO_GET_AUTHETICATION";
+     }
+ 
+     get urlLogout() {
+       return this.url + "PATH_TO_LOGOUT";
+     }
+ 
+     get urlLogin() {
+       return this.url + "PATH_TO_LOGIN";
+     }
   }
