@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coleciona+ - Criar Conta</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+
+    <link rel="stylesheet" href="css/styleCriarConta.css" />
+  </head>
+  <body>
+    <div class="register-container">
+      <div class="register-card">
+        <div class="register-header">
+          <h2><i class="bi bi-collection"></i> Criar Conta</h2>
+          <p>Registe-se para começar a gerir as suas coleções</p>
+        </div>
+
+        <!-- Mensagem de alerta -->
+        <div id="alertMessage" class="alert-message"></div>
+
+        <!-- Formulário de Registo -->
+        <form id="registerForm">
+          <div class="form-floating">
+            <input type="text" class="form-control" id="nome" placeholder="Nome completo" required />
+            <label><i class="bi bi-person me-2"></i>Nome completo</label>
+          </div>
+
+          <div class="form-floating">
+            <input type="email" class="form-control" id="email" placeholder="nome@exemplo.com" required />
+            <label><i class="bi bi-envelope me-2"></i>Email</label>
+          </div>
+
+          <div class="form-floating">
+            <input type="password" class="form-control" id="password" placeholder="Password" required />
+            <label><i class="bi bi-lock me-2"></i>Password</label>
+          </div>
+
+          <!-- Indicador de força da password -->
+          <div class="password-strength">
+            <div class="password-strength-bar" id="passwordStrengthBar"></div>
+          </div>
+          <div class="strength-text" id="strengthText">Digite uma password</div>
+
+          <div class="form-floating">
+            <input type="password" class="form-control" id="confirmPassword" placeholder="Confirmar password" required />
+            <label><i class="bi bi-lock-fill me-2"></i>Confirmar password</label>
+          </div>
+
+          <div class="terms-check">
+            <input type="checkbox" id="terms" required />
+            <label for="terms">Li e aceito os <a href="#">Termos e Condições</a> e a <a href="#">Política de Privacidade</a></label>
+          </div>
+
+          <button type="submit" class="btn-register" id="btnRegister">
+            <span class="spinner" id="registerSpinner"></span>
+            <span>Criar Conta</span>
+          </button>
+        </form>
+
+        <div class="divider">
+          <span>ou</span>
+        </div>
+
+        <!-- Registo com Google -->
+        <button class="btn-google" id="googleRegister">
+          <img src="https://www.google.com/favicon.ico" alt="Google" />
+          Registar com Google
+        </button>
+
+        <div class="register-footer">
+          <p>Já tem uma conta? <a href="/public/login">Fazer login</a></p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Validação de força da password
+      const passwordInput = document.getElementById("password");
+      const strengthBar = document.getElementById("passwordStrengthBar");
+      const strengthText = document.getElementById("strengthText");
+
+      passwordInput.addEventListener("input", function () {
+        const password = this.value;
+        let strength = 0;
+
+        if (password.length >= 8) strength += 25;
+        if (password.match(/[a-z]+/)) strength += 25;
+        if (password.match(/[A-Z]+/)) strength += 25;
+        if (password.match(/[0-9]+/)) strength += 25;
+        if (password.match(/[$@#&!]+/)) strength += 25;
+
+        // Limitar a 100%
+        strength = Math.min(strength, 100);
+
+        // Atualizar barra
+        strengthBar.style.width = strength + "%";
+
+        // Cores e texto
+        if (strength < 30) {
+          strengthBar.style.background = "#dc3545";
+          strengthText.textContent = "Fraca";
+          strengthText.style.color = "#dc3545";
+        } else if (strength < 60) {
+          strengthBar.style.background = "#ffc107";
+          strengthText.textContent = "Média";
+          strengthText.style.color = "#ffc107";
+        } else if (strength < 80) {
+          strengthBar.style.background = "#17a2b8";
+          strengthText.textContent = "Boa";
+          strengthText.style.color = "#17a2b8";
+        } else {
+          strengthBar.style.background = "#28a745";
+          strengthText.textContent = "Excelente";
+          strengthText.style.color = "#28a745";
+        }
+      });
+
+      // Validar confirmação de password
+      document.getElementById("confirmPassword").addEventListener("input", function () {
+        const password = document.getElementById("password").value;
+        const confirm = this.value;
+
+        if (confirm === "") {
+          this.classList.remove("is-valid", "is-invalid");
+        } else if (password === confirm) {
+          this.classList.add("is-valid");
+          this.classList.remove("is-invalid");
+        } else {
+          this.classList.add("is-invalid");
+          this.classList.remove("is-valid");
+        }
+      });
+
+      // Submissão do formulário
+      document.getElementById("registerForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const nome = document.getElementById("nome").value;
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        const confirmPassword = document.getElementById("confirmPassword").value;
+        const terms = document.getElementById("terms").checked;
+
+        const btnRegister = document.getElementById("btnRegister");
+        const spinner = document.getElementById("registerSpinner");
+        const alertDiv = document.getElementById("alertMessage");
+
+        // Validações
+        if (password !== confirmPassword) {
+          alertDiv.className = "alert-message alert-danger";
+          alertDiv.innerHTML = '<i class="bi bi-exclamation-triangle me-2"></i>As passwords não coincidem';
+          alertDiv.style.display = "block";
+          return;
+        }
+
+        if (!terms) {
+          alertDiv.className = "alert-message alert-danger";
+          alertDiv.innerHTML = '<i class="bi bi-exclamation-triangle me-2"></i>Deve aceitar os termos e condições';
+          alertDiv.style.display = "block";
+          return;
+        }
+
+        // Mostrar loading
+        btnRegister.disabled = true;
+        spinner.style.display = "inline-block";
+        sendData(0);
+
+
+      // Registo com Google
+      document.getElementById("googleRegister").addEventListener("click", function () {
+        const alertDiv = document.getElementById("alertMessage");
+        //sendData();
+        alertDiv.className = "alert-message alert-success";
+        alertDiv.innerHTML = '<i class="bi bi-google me-2"></i>A redirecionar para autenticação Google...';
+        alertDiv.style.display = "block";
+
+        /* setTimeout(function () {
+          window.location.href = "dashboard.html";
+        }, 1500); */
+      });
+
+      // exemple of fetch using PUT
+      const sendData = async (gmail) => {
+        try {
+          // The data to send
+          const dataSend = {
+            Nome: document.getElementById("nome").value,
+            Email: document.getElementById("email").value,
+            Passw: document.getElementById("password").value,
+            Gmail: gmail,
+          };
+
+          //console.log(JSON.stringify(dataSend));
+
+          //str = "Nome=" + document.getElementById("nome").value + "&Email=" + document.getElementById("email").value + "&Passw=" + document.getElementById("password").value + "&Gmail=" + gmail;
+
+          //console.log(str);
+
+          const response = await fetch("/public/api/utilizadores", {
+            method: "POST", // Método HTTP
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: "Bearer your-token", // if necessary
+            },
+            body: JSON.stringify(dataSend), // Convert data to JSON
+            //body: str,
+          });
+
+          if (!response.ok) {
+            throw new Error(`Erro HTTP: ${response.status}`);
+          }
+
+          const dadosResposta = await response.json();
+          window.location = "/public/";
+          console.log("Data updated:", dadosResposta);
+        } catch (erro) {
+          console.error("Error updating data:", erro);
+        }
+      };
+    </script>
+  </body>
+</html>
